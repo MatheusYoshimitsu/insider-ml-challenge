@@ -6,7 +6,7 @@ The Titanic Dataset can be found at [Kaggle](https://www.kaggle.com/competitions
 
 ## Requirements
 
-- Python 3.12
+- Python 3.10+
 
 ### Preparing the environment
 
@@ -49,5 +49,8 @@ This will download the .pkl models in place of the pointer files.
 
 More details about the model, like its evaluation and score can be found in [`this notebook`](notebooks/main.ipynb).
 
-
 ## Running the API
+
+```bash
+uvicorn src.main:app --reload
+```
