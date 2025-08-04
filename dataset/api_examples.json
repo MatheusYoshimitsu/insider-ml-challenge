@@ -1,0 +1,72 @@
+[
+    {
+        "PassengerId":661,
+        "Survived":1,
+        "Pclass":1,
+        "Name":"Frauenthal, Dr. Henry William",
+        "Sex":"male",
+        "Age":50.0,
+        "SibSp":2,
+        "Parch":0,
+        "Ticket":"PC 17611",
+        "Fare":133.65,
+        "Cabin":null,
+        "Embarked":"S"
+    },
+    {
+        "PassengerId":400,
+        "Survived":1,
+        "Pclass":2,
+        "Name":"Trout, Mrs. William H (Jessie L)",
+        "Sex":"female",
+        "Age":28.0,
+        "SibSp":0,
+        "Parch":0,
+        "Ticket":"240929",
+        "Fare":12.65,
+        "Cabin":null,
+        "Embarked":"S"
+    },
+    {
+        "PassengerId":7,
+        "Survived":0,
+        "Pclass":1,
+        "Name":"McCarthy, Mr. Timothy J",
+        "Sex":"male",
+        "Age":54.0,
+        "SibSp":0,
+        "Parch":0,
+        "Ticket":"17463",
+        "Fare":51.8625,
+        "Cabin":"E46",
+        "Embarked":"S"
+    },
+    {
+        "PassengerId":765,
+        "Survived":0,
+        "Pclass":3,
+        "Name":"Eklund, Mr. Hans Linus",
+        "Sex":"male",
+        "Age":16.0,
+        "SibSp":0,
+        "Parch":0,
+        "Ticket":"347074",
+        "Fare":7.775,
+        "Cabin":null,
+        "Embarked":"S"
+    },
+    {
+        "PassengerId":307,
+        "Survived":1,
+        "Pclass":1,
+        "Name":"Fleming, Miss. Margaret",
+        "Sex":"female",
+        "Age":null,
+        "SibSp":0,
+        "Parch":0,
+        "Ticket":"17421",
+        "Fare":110.8833,
+        "Cabin":null,
+        "Embarked":"C"
+    }
+]
