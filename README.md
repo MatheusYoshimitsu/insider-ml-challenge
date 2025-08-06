@@ -6,7 +6,7 @@ The Titanic Dataset can be found at [Kaggle](https://www.kaggle.com/competitions
 
 ## Project structure
 
-```bash
+```text
 .
 ├── Dockerfile
 ├── README.md
@@ -97,6 +97,36 @@ flowchart TD
 ## Requirements
 
 - Python 3.12.x
+- Git LFS (recommended to be installed **before** cloning the rep)
+
+### Git LFS
+
+The Git LFS is mandatory to be installed in our system, otherwise, the models will appear like a hash code. In [`Git LFS docs`](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage?platform=linux) we can find everything we should know to install it.  
+It is also good practice to install the Git LFS for uploading big models to GitHub.
+
+> PS: This step is mandatory if you cloned the project **without** having Git LFS. If it is already installed in your system, the git clone should automatically convert the hash into the "real" pickle files.
+
+In Linux systems, especifically Debian based like Ubuntu, we can do this in the terminal running:
+
+```bash
+sudo apt update && sudo apt install git-lfs
+```
+
+Then, we must initialize Git LFS in our system:
+
+```bash
+git lfs install
+```
+
+Now, we need to pull our pickle files:
+
+```bash
+git lfs pull
+```
+
+This will download the .pkl models in place of the pointer files.
+
+More details about the models, like its evaluation and score can be found in [`this notebook`](notebooks/eda.ipynb).
 
 ### Preparing the environment
 
@@ -113,31 +143,6 @@ Then, using pip, we must download the dependecies from [`requirements.txt`](requ
 ```bash
 pip install -r requirements.txt
 ```
-
-### Git LFS
-
-It is also good to install the Git LFS for uploading models to GitHub.
-In Linux systems, especifically Debian based like Ubuntu, we can do this in the terminal running:
-
-```bash
-sudo apt install git-lfs
-```
-
-Then, we must initialize Git LFS in our project directory:
-
-```bash
-git lfs install
-```
-
-Now, we need to pull our pickle files:
-
-```bash
-git lfs pull
-```
-
-This will download the .pkl models in place of the pointer files.
-
-More details about the model, like its evaluation and score can be found in [`this notebook`](notebooks/eda.ipynb).
 
 ## Training
 
@@ -174,7 +179,7 @@ The default route of the API will be redirected to the docs with Swagger. We can
 
 ### /health
 
-Checks the API health.
+Checks the API health, it tests if the service is running.
 
 ### /predict
 
@@ -182,6 +187,7 @@ Below we have an example of a passenger input expected for the prediction.
 Note:  
 
 - Some values can be null, we can check the docs accordingly
+- In [`api_examples.json`](dataset/api_examples.json), we can take some examples extracted from the validation set.
 - `survived` may not be in input:
 
 ```json
@@ -221,5 +227,6 @@ docker build --platform=linux/amd64 -t titanic-api .
 Then, we can push it to our registry:
 
 ```bash
+# this registry does not exist
 docker push https://www.titanic-api.com/api
 ```
