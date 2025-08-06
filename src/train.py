@@ -163,14 +163,12 @@ def main() -> None:
     models_dir = Path(__file__).resolve().parents[1] / "models"
     models_dir.mkdir(parents=True, exist_ok=True)
 
-    # Load and split dataset
     train_df = load_dataset(dataset_path)
     y = train_df["Survived"]
     X_train, X_val, y_train, y_val = train_test_split(
         train_df, y, test_size=0.2, random_state=29, stratify=y
     )
 
-    # Define columns
     categorical_cols = [
         "Pclass",
         "Sex",
@@ -181,11 +179,9 @@ def main() -> None:
     ]
     numerical_cols = ["Age", "SibSp", "Parch", "norm_fare"]
 
-    # Build pipelines
     preprocessor = build_preprocessor(categorical_cols, numerical_cols)
     pipelines = build_pipelines(preprocessor)
 
-    # Define hyperparameters
     param_grid_rf = {
         "model__n_estimators": [100, 200, 400, 500],
         "model__criterion": ["gini", "entropy"],
@@ -209,7 +205,6 @@ def main() -> None:
         },
     ]
 
-    # Train and evaluate models
     best_rf = perform_grid_search(
         "Random Forest",
         pipelines["RandomForest"],

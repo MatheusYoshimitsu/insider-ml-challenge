@@ -34,12 +34,10 @@ def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
     """
     df = df.copy()
 
-    # Fill missing values
     df["Embarked"] = df["Embarked"].fillna("C")
     df["Age"] = df["Age"].fillna(df["Age"].median())
     df["Fare"] = df["Fare"].fillna(df["Fare"].median())
 
-    # Engineered features
     df["norm_fare"] = np.log(df["Fare"] + 1)
     df["cabin_multiple"] = (
         df["Cabin"]
@@ -51,9 +49,7 @@ def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
         lambda x: x.split(",")[1].split(".")[0].strip()
     )
 
-    # Convert to string for categorical
     df["Pclass"] = df["Pclass"].astype(str)
 
-    # Drop unused columns
     drop_cols = ["PassengerId", "Name", "Cabin", "Ticket", "Survived"]
     return df.drop(columns=[col for col in drop_cols if col in df.columns])
