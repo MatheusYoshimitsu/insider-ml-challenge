@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from pydantic.config import ConfigDict
 
 
 class PassengerData(BaseModel):
@@ -29,5 +30,4 @@ class PassengerData(BaseModel):
     Cabin: str | None = None
     Embarked: str | None = None
 
-    class Config:
-        extra = "forbid"
+    model_config = ConfigDict(extra="forbid")

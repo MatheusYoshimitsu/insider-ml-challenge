@@ -128,21 +128,25 @@ This will download the .pkl models in place of the pointer files.
 
 More details about the models, like its evaluation and score can be found in [`this notebook`](notebooks/eda.ipynb).
 
-### Preparing the environment
+### Using Python environment
 
 **PS: The following commands may be used on a Linux terminal.**
 
 First, we need to create and activate our virtual environment (venv):
 
 ```bash
-python3 -m venv venv && source venv/bin/activate
+python3 -m venv .venv && source .venv/bin/activate
 ```
 
 Then, using pip, we must download the dependecies from [`requirements.txt`](requirements.txt)
 
 ```bash
-pip install -r requirements.txt
+pip install --upgrade -r requirements.txt
 ```
+
+### Using Conda
+
+If you have preference for conda, 
 
 ## Training
 

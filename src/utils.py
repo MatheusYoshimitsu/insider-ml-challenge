@@ -3,6 +3,9 @@ import numpy as np
 import pandas as pd
 import logging
 
+# Turn on warnings about silent downcasting
+pd.set_option("future.no_silent_downcasting", True)
+
 
 def get_logger(name: str = __name__) -> logging.Logger:
     """
@@ -35,8 +38,20 @@ def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
 
     df["Embarked"] = df["Embarked"].fillna("C")
-    df["Age"] = df["Age"].fillna(df["Age"].median())
-    df["Fare"] = df["Fare"].fillna(df["Fare"].median())
+
+    if df["Age"].notna().any():
+        df["Age"] = (
+            df["Age"].fillna(df["Age"].median()).infer_objects(copy=False)
+        )
+    else:
+        df["Age"] = df["Age"].fillna(0).infer_objects(copy=False)
+
+    if df["Fare"].notna().any():
+        df["Fare"] = (
+            df["Fare"].fillna(df["Fare"].median()).infer_objects(copy=False)
+        )
+    else:
+        df["Fare"] = df["Fare"].fillna(0).infer_objects(copy=False)
 
     df["norm_fare"] = np.log(df["Fare"] + 1)
     df["cabin_multiple"] = (
