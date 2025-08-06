@@ -144,10 +144,6 @@ Then, using pip, we must download the dependecies from [`requirements.txt`](requ
 pip install --upgrade -r requirements.txt
 ```
 
-### Using Conda
-
-If you have preference for conda, 
-
 ## Training
 
 From the root project directory, you can run the training using:
